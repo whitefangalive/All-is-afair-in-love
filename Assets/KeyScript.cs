@@ -12,7 +12,7 @@ public class KeyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Renderer>().material.color = Color.white;
+        GetComponent<Renderer>().material.color = Color.magenta;
         m_TextComponent = GetComponentInChildren<TMP_Text>();
 
     }
@@ -34,6 +34,6 @@ public class KeyScript : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        GetComponent<Renderer>().material.color = Color.white;
+        GetComponent<Renderer>().material.color = Color.magenta;
     }
 }
