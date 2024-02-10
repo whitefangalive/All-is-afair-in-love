@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Events;
+
 
 public class KeyScript : MonoBehaviour
 {
     private TMP_Text m_TextComponent;
     private string number;
+    public Keypad keypad;
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<Renderer>().material.color = Color.white;
         m_TextComponent = GetComponentInChildren<TMP_Text>();
 
     }
@@ -19,12 +21,19 @@ public class KeyScript : MonoBehaviour
     void Update()
     {
         number = m_TextComponent.text;
+
     }
 
-    public UnityEvent KeypadClicked;
-    public void OnClick() 
+    public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Clicked " + number);
-        KeypadClicked.Invoke();
+        GetComponent<Renderer>().material.color = Color.grey;
+        keypad.buttonClicked(number);
+    }
+
+
+
+    public void OnTriggerExit(Collider other)
+    {
+        GetComponent<Renderer>().material.color = Color.white;
     }
 }

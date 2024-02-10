@@ -4,8 +4,26 @@ using UnityEngine;
 
 public class Keypad : MonoBehaviour
 {
-    public void buttonClicked(int number) 
+    public string password = "1111855";
+    public string userInput = "";
+
+    public AudioSource click;
+    public void buttonClicked(string number) 
     {
-        Debug.Log($"ClickedFromKeypad {number}");
+        click.Play();
+        if (userInput != password) 
+        {
+            userInput += number;
+        }
+        
+
+        if (userInput == password)
+        {
+            Debug.Log("Correct");
+        }
+        else if (userInput.Length > password.Length)
+        {
+            userInput = "";
+        }
     }
 }
