@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Keypad : MonoBehaviour
 {
+    public OpenPhone passcodeCorrect;
     public string password = "1111855";
     public string userInput = "";
 
@@ -19,7 +20,7 @@ public class Keypad : MonoBehaviour
 
         if (userInput == password)
         {
-            Debug.Log("Correct");
+            passcodeCorrect.ChangeScreen();
         }
         else if (userInput.Length > password.Length)
         {

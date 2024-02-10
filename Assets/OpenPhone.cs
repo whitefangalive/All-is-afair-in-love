@@ -9,6 +9,11 @@ public class OpenPhone : MonoBehaviour
     public AudioSource click;
 
     private bool opening = false;
+    private float startingY;
+    private void Start()
+    {
+        startingY = screen2.transform.position.y + 0.75f;
+    }
     public void ChangeScreen()
     {
         if (screen1.activeInHierarchy == true)
@@ -25,7 +30,7 @@ public class OpenPhone : MonoBehaviour
         if (opening == true)
         {
             screen2.transform.position = Vector3.Lerp(screen2.transform.position, new Vector3(screen2.transform.position.x, 
-                screen2.transform.position.y + 0.75f, screen2.transform.position.z), Time.deltaTime * 1);
+                screen1.transform.position.y, screen2.transform.position.z), Time.deltaTime * 2);
         }
     }
 }

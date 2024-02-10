@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class updatePassCode : MonoBehaviour
+public class UpdatePassCode : MonoBehaviour
 {
     private TMP_Text m_TextComponent;
     public Keypad keypad;
