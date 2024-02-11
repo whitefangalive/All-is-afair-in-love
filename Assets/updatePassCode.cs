@@ -21,9 +21,6 @@ public class UpdatePassCode : MonoBehaviour
     {
         input = keypad.userInput;
         Debug.Log(input);
-        if (input.Length > 0) 
-        {
-            m_TextComponent.text = input;
-        }
+        m_TextComponent.text = input;
     }
 }

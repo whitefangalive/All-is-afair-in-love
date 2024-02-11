@@ -12,19 +12,24 @@ public class Keypad : MonoBehaviour
     public void buttonClicked(string number) 
     {
         click.Play();
-        if (userInput != password) 
+        if (userInput != password && (number != ">" && number != "X")) 
         {
             userInput += number;
         }
-        
 
-        if (userInput == password)
+
+        if (userInput == password && number == ">")
         {
             passcodeCorrect.ChangeScreen();
-        }
-        else if (userInput.Length > password.Length)
+        } else if (userInput != password && number == ">") 
         {
             userInput = "";
         }
+        if (number == "X" && userInput.Length > 0)
+        {
+            userInput = userInput.Remove(userInput.Length - 1);
+        }
+        Debug.Log(number);
+        Debug.Log(userInput);
     }
 }
