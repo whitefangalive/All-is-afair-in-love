@@ -29,8 +29,8 @@ public class OpenPhone : MonoBehaviour
     {
         if (opening == true)
         {
-            screen2.transform.position = Vector3.Lerp(screen2.transform.position, new Vector3(screen2.transform.position.x, 
-                screen1.transform.position.y, screen2.transform.position.z), Time.deltaTime * 2);
+            screen2.transform.position = Vector3.Lerp(screen2.transform.position, new Vector3(screen1.transform.position.x, 
+                screen1.transform.position.y, screen1.transform.position.z), Time.deltaTime * 2);
         }
     }
 }
