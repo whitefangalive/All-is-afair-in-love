@@ -20,7 +20,6 @@ public class UpdatePassCode : MonoBehaviour
     void Update()
     {
         input = keypad.userInput;
-        Debug.Log(input);
         m_TextComponent.text = input;
     }
 }

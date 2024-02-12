@@ -29,7 +29,5 @@ public class Keypad : MonoBehaviour
         {
             userInput = userInput.Remove(userInput.Length - 1);
         }
-        Debug.Log(number);
-        Debug.Log(userInput);
     }
 }
