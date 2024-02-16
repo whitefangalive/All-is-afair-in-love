@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class pocketCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public awakeness scoreManager;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
-        
+        scoreManager.hit();
     }
 
 }
