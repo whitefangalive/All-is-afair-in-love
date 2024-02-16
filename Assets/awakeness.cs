@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class awakeness : MonoBehaviour
 {
@@ -9,8 +10,11 @@ public class awakeness : MonoBehaviour
     public float maxIFrames = 60;
     [SerializeField] private float iFrames = 0;
 
+    public GameObject tryAgainCube;
+
     private void Start()
     {
+        tryAgainCube.SetActive(false);
         for (int i = 1; i < awake; i++)
         {
             GameObject zObject = Instantiate(Z, this.transform);
@@ -25,7 +29,7 @@ public class awakeness : MonoBehaviour
             iFrames--;
         }
     }
-    public void hit()
+    public async void hit()
     {
         if (iFrames == 0)
         {
@@ -41,6 +45,14 @@ public class awakeness : MonoBehaviour
             {
                 Debug.Log("Unable to find " + currentZ.name.ToString());
             }
+        }
+        if (awake <= 0)
+        {
+           TMP_Text loseDialogue = GameObject.Find("LoseDialogueText").GetComponent<TMP_Text>();
+            loseDialogue.maxVisibleCharacters = 0;
+            loseDialogue.text = "You Lose.";
+            tryAgainCube.SetActive(true);
+
         }
     }
 }
