@@ -8,14 +8,18 @@ public class hintSystem : MonoBehaviour
     public Clock clock;
     private int minutes;
 
-    public Keypad Keypad;
+    [Header("Phone Hint")]
+    public GameObject Phone;
+    public GameObject Player;
+    public float distanceToPhone = 5f;
 
     private TMP_Text hint;
     public AudioSource NotificationSound;
 
-    [Header("Achievements")]
     [SerializeField] bool LookedAtPhone = false;
     public float lookedAtPhoneTime = 5.0f;
+
+    [Header("Checked Pocket Hint")]
     [SerializeField] bool CheckedPocket = false;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +31,8 @@ public class hintSystem : MonoBehaviour
     void Update()
     {
         minutes = clock.Minutes;
-        if (Keypad.userInput.Length > 0 && LookedAtPhone == false)
+        float dist = Vector3.Distance(Phone.transform.position, Player.transform.position);
+        if (dist < distanceToPhone && LookedAtPhone == false)
         {
             LookedAtPhone = true;
         }

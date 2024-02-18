@@ -6,9 +6,11 @@ public class pocketCollision : MonoBehaviour
 {
     public awakeness scoreManager;
 
-    private void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        scoreManager.hit();
+        if (collision.collider.tag != "sleepingPerson") 
+        {
+            scoreManager.hit();
+        }
     }
-
 }
