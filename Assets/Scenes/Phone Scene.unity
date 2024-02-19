@@ -2088,6 +2088,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   awake: 3
   Z: {fileID: 0}
+  maxIFrames: 60
+  iFrames: 0
+  tryAgainCube: {fileID: 0}
 --- !u!1 &220324291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2868,6 +2871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70254e41786b0d4eb90c090356e9d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreManager: {fileID: 0}
 --- !u!65 &281058234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9107,11 +9111,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clock: {fileID: 947235459}
-  Keypad: {fileID: 90123685}
+  Phone: {fileID: 0}
+  Player: {fileID: 0}
+  distanceToPhone: 5
   NotificationSound: {fileID: 1010548393}
   LookedAtPhone: 0
-  lookedAtPhoneTime: 3
+  lookedAtPhoneTime: 5
   CheckedPocket: 0
+  Note: {fileID: 0}
+  CheckedPocketTime: 10
+  CheckedCalender: 0
+  CheckedBook: 0
 --- !u!1 &863758703
 GameObject:
   m_ObjectHideFlags: 0
@@ -17649,7 +17659,7 @@ PrefabInstance:
     - target: {fileID: 7405846476849834440, guid: c6308cb7062fac34e8e50600086b12a1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849834440, guid: c6308cb7062fac34e8e50600086b12a1,
         type: 3}
