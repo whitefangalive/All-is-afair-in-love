@@ -39,11 +39,6 @@ public class awakeness : MonoBehaviour
             if (currentZ != null)
             {
                 Destroy(currentZ);
-                Debug.Log("Was able to find " + currentZ.name.ToString() + " and tried to destroy it.");
-            }
-            else
-            {
-                Debug.Log("Unable to find " + currentZ.name.ToString());
             }
         }
         if (awake <= 0)
