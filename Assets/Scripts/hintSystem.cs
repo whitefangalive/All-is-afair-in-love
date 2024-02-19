@@ -17,10 +17,18 @@ public class hintSystem : MonoBehaviour
     public AudioSource NotificationSound;
 
     [SerializeField] bool LookedAtPhone = false;
-    public float lookedAtPhoneTime = 5.0f;
+    public int lookedAtPhoneTime = 5;
 
     [Header("Checked Pocket Hint")]
     [SerializeField] bool CheckedPocket = false;
+    public GameObject Note;
+    public int CheckedPocketTime = 10;
+
+    [Header("Checked Calender Hint")]
+    [SerializeField] bool CheckedCalender = false;
+
+    [Header("Checked Book Hint")]
+    [SerializeField] bool CheckedBook = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,14 +45,29 @@ public class hintSystem : MonoBehaviour
             LookedAtPhone = true;
         }
 
-        if (LookedAtPhone == false && minutes == lookedAtPhoneTime) 
+        if (LookedAtPhone == false && (minutes % lookedAtPhoneTime == 0 && minutes != 0) && hint.text == "") 
         {
             hint.maxVisibleCharacters = 0;
             hint.text = "Whys their phone going off this late?";
             NotificationSound.Play(0);
-            LookedAtPhone = true;
         }
-        if (minutes == lookedAtPhoneTime + 1) 
+        if (minutes % lookedAtPhoneTime + 1 == 0) 
+        {
+            hint.maxVisibleCharacters = 0;
+            hint.text = "";
+        }
+
+        if (Note.transform.parent != null) 
+        {
+            CheckedPocket = true;
+        }
+        if (CheckedPocket == false && minutes % CheckedPocketTime == 0 && minutes != 0 && hint.text == "")
+        {
+            hint.maxVisibleCharacters = 0;
+            hint.text = "Whats that in their pocket?";
+            CheckedPocket = true;
+        }
+        if (minutes % CheckedPocketTime + 1 == 0)
         {
             hint.maxVisibleCharacters = 0;
             hint.text = "";
