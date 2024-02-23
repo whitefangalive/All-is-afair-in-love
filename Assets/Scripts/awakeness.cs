@@ -8,7 +8,8 @@ public class awakeness : MonoBehaviour
     public int awake = 3;
     public GameObject Z;
     public float maxIFrames = 60;
-    [SerializeField] private float iFrames = 0;
+    [SerializeField] private float iFrames = 120;
+    public AudioSource snore;
 
     public GameObject tryAgainCube;
 
@@ -21,6 +22,8 @@ public class awakeness : MonoBehaviour
             zObject.name = "z" + i.ToString();
             zObject.GetComponent<RectTransform>().localPosition += new Vector3(0.2f * i, 0.2f * i, 0);
         }
+
+        snore = GetComponent<AudioSource>();
     }
     private void FixedUpdate()
     {
@@ -29,7 +32,7 @@ public class awakeness : MonoBehaviour
             iFrames--;
         }
     }
-    public async void hit()
+    public void hit()
     {
         if (iFrames == 0)
         {
@@ -38,7 +41,9 @@ public class awakeness : MonoBehaviour
             GameObject currentZ = GameObject.Find("z" + awake.ToString());
             if (currentZ != null)
             {
-                Destroy(currentZ);
+                //Destroy(currentZ);
+                currentZ.GetComponent<TMP_Text>().color = Color.black;
+                snore.Play(0);
             }
         }
         if (awake <= 0)
