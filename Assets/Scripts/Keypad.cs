@@ -1,27 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
+using System.Linq;
 
 public class Keypad : MonoBehaviour
 {
     public OpenPhone passcodeCorrect;
-    public string password = "1111855";
+    public string password = "77772655";
+    public string[] passwords = new string[] { };
     public string userInput = "";
 
     public AudioSource click;
     public void buttonClicked(string number) 
     {
         click.Play();
-        if (userInput != password && (number != ">" && number != "X")) 
+        if (!passwords.Contains(userInput) && (number != ">" && number != "X")) 
         {
             userInput += number;
         }
 
 
-        if (userInput == password && number == ">")
+        if (passwords.Contains(userInput) && number == ">")
         {
             passcodeCorrect.ChangeScreen();
-        } else if (userInput != password && number == ">") 
+            TMP_Text loseDialogue = GameObject.Find("LoseDialogueText").GetComponent<TMP_Text>();
+            loseDialogue.maxVisibleCharacters = 0;
+            loseDialogue.text = "You Win.";
+        } else if (!passwords.Contains(userInput) && number == ">") 
         {
             userInput = "";
         }
